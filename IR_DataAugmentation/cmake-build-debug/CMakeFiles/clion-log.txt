@@ -1,0 +1,49 @@
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/vladislavtyurin/Diploma/IR_DataAugmentation
+CMake Warning at /Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindBoost.cmake:743 (message):
+  Imported targets not available for Boost version 106501
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindBoost.cmake:842 (_Boost_COMPONENT_DEPENDENCIES)
+  /Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindBoost.cmake:1395 (_Boost_MISSING_DEPENDENCIES)
+  CMakeLists.txt:10 (find_package)
+
+
+CMake Warning at /Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindBoost.cmake:743 (message):
+  Imported targets not available for Boost version 106501
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindBoost.cmake:842 (_Boost_COMPONENT_DEPENDENCIES)
+  /Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindBoost.cmake:1395 (_Boost_MISSING_DEPENDENCIES)
+  CMakeLists.txt:10 (find_package)
+
+
+CMake Warning at /Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindBoost.cmake:743 (message):
+  Imported targets not available for Boost version 106501
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindBoost.cmake:842 (_Boost_COMPONENT_DEPENDENCIES)
+  /Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindBoost.cmake:1395 (_Boost_MISSING_DEPENDENCIES)
+  CMakeLists.txt:10 (find_package)
+
+
+-- Boost version: 1.65.1
+-- Found the following Boost libraries:
+--   filesystem
+--   system
+--   thread
+CMake Error at CMakeLists.txt:11 (find_package):
+  By not providing "FindOpenCV.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "OpenCV", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "OpenCV" with any
+  of the following names:
+
+    OpenCVConfig.cmake
+    opencv-config.cmake
+
+  Add the installation prefix of "OpenCV" to CMAKE_PREFIX_PATH or set
+  "OpenCV_DIR" to a directory containing one of the above files.  If "OpenCV"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/vladislavtyurin/Diploma/IR_DataAugmentation/cmake-build-debug/CMakeFiles/CMakeOutput.log".
