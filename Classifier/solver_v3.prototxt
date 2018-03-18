@@ -17,5 +17,5 @@ display: 100
 max_iter: 500000
 # snapshot intermediate results
 snapshot: 1000
-snapshot_prefix: "../snapshots_v3/CLR"
+snapshot_prefix: "Colab_Diploma/Classifier/snapshots_v3/CLR"
 solver_mode: GPU
