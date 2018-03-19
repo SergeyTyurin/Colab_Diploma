@@ -13,7 +13,7 @@ layer {
   }
   data_param {
     source: "../lmdb/VS_Classfication_New_224/train_db"
-    batch_size: 5
+    batch_size: 16
     backend: LMDB
   }
 }
@@ -30,7 +30,7 @@ layer {
   }
   data_param {
     source: "../lmdb/VS_Classfication_New_224/val_db"
-    batch_size: 1
+    batch_size: 8
     backend: LMDB
   }
 }
