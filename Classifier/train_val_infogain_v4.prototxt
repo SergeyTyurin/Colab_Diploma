@@ -9,11 +9,11 @@ layer {
   transform_param {
     scale: 0.00392156885937
     mirror: true
-    mean_file:"../lmdb/VS_Classfication_New_224/mean.binaryproto"
+    mean_file:"/home/styurin/Diploma/lmdb/VS_Classfication_New_224/mean.binaryproto"
   }
   data_param {
-    source: "../lmdb/VS_Classfication_New_224/train_db"
-    batch_size: 16
+    source: "/home/styurin/Diploma/lmdb/VS_Classfication_New_224/train_db"
+    batch_size: 10
     backend: LMDB
   }
 }
@@ -29,8 +29,8 @@ layer {
     scale: 0.00392156885937
   }
   data_param {
-    source: "../lmdb/VS_Classfication_New_224/val_db"
-    batch_size: 8
+    source: "/home/styurin/Diploma/lmdb/VS_Classfication_New_224/val_db"
+    batch_size: 10
     backend: LMDB
   }
 }
@@ -42,7 +42,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 128
+    num_output: 20
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -64,7 +64,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 128
+    num_output: 20
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -97,7 +97,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 256
+    num_output: 40
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -119,7 +119,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 256
+    num_output: 40
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -152,7 +152,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 512
+    num_output: 80
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -174,7 +174,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 512
+    num_output: 80
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -210,7 +210,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 256
+    num_output: 40
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -231,7 +231,7 @@ layer {
   bottom: "relu7"
   top: "fc1"
   inner_product_param {
-    num_output: 64
+    num_output: 20
     weight_filler {
       type: "xavier"
     }
@@ -244,7 +244,7 @@ layer {
   bottom: "fc1"
   top: "fc2"
   inner_product_param {
-    num_output: 32
+    num_output: 10
     weight_filler {
       type: "xavier"
     }

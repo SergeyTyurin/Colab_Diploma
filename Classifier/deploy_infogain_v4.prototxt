@@ -12,7 +12,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 128
+    num_output: 20
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -34,7 +34,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 128
+    num_output: 20
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -67,7 +67,7 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 256
+    num_output: 40
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -83,13 +83,13 @@ layer {
 }
 layer {
   name: "conv4"
-  param { lr_mult: 1 }
-  param { lr_mult: 2 }
   type: "Convolution"
   bottom: "relu3"
   top: "conv4"
+  param { lr_mult: 1 }
+  param { lr_mult: 2 }
   convolution_param {
-    num_output: 256
+    num_output: 40
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -116,13 +116,13 @@ layer {
 }
 layer {
   name: "conv5"
-  param { lr_mult: 1 }
-  param { lr_mult: 2 }
   type: "Convolution"
   bottom: "pool4"
   top: "conv5"
+  param { lr_mult: 1 }
+  param { lr_mult: 2 }
   convolution_param {
-    num_output: 512
+    num_output: 80
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -138,13 +138,13 @@ layer {
 }
 layer {
   name: "conv6"
-  param { lr_mult: 1 }
-  param { lr_mult: 2 }
   type: "Convolution"
   bottom: "relu5"
   top: "conv6"
+  param { lr_mult: 1 }
+  param { lr_mult: 2 }
   convolution_param {
-    num_output: 512
+    num_output: 80
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -174,13 +174,13 @@ layer {
 
 layer {
   name: "conv7"
-  param { lr_mult: 1 }
-  param { lr_mult: 2 }
   type: "Convolution"
   bottom: "pool6"
   top: "conv7"
+  param { lr_mult: 1 }
+  param { lr_mult: 2 }
   convolution_param {
-    num_output: 256
+    num_output: 40
     kernel_size: 5
     stride: 1
     weight_filler {
@@ -201,7 +201,7 @@ layer {
   bottom: "relu7"
   top: "fc1"
   inner_product_param {
-    num_output: 64
+    num_output: 20
     weight_filler {
       type: "xavier"
     }
@@ -214,7 +214,7 @@ layer {
   bottom: "fc1"
   top: "fc2"
   inner_product_param {
-    num_output: 32
+    num_output: 10
     weight_filler {
       type: "xavier"
     }
