@@ -10,7 +10,7 @@ var = './'
 
 var_log = var.replace('(','\(')
 var_log = var_log.replace(')','\)')
-command = "bash {0} {1} {2} {3}".format(parse_log,file_path,var,"log_3.txt")
+command = "bash {0} {1} {2} {3}".format(parse_log,file_path,var,"log_5.txt")
 print command
 
 os.system(command)

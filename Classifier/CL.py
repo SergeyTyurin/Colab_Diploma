@@ -19,7 +19,7 @@ from google.protobuf import text_format
 from caffe.proto import caffe_pb2
 
 # load PASCAL VOC labels
-labelmap_file = '/Users/sergeytyurin/Desktop/toDrive/Colab_Diploma/lmdb/label_map_s.prototxt'
+labelmap_file = '/home/styurin/SSD/VGGNet/VOC0712/labelmap_voc.prototxt'
 file = open(labelmap_file, 'r')
 labelmap = caffe_pb2.LabelMap()
 text_format.Merge(str(file.read()), labelmap)
@@ -44,7 +44,7 @@ def vis_square(data):
     and visualize each (height, width) thing in a grid of size approx.
     sqrt(n) by sqrt(n)"""
     # normalize data for display
-    print data.shape
+    #print data.shape
     data = (data - data.min()) / (data.max() - data.min())
     # force the number of filters to be square
     n = int(np.ceil(np.sqrt(data.shape[0])))
@@ -55,8 +55,9 @@ def vis_square(data):
     data = data.reshape((n * data.shape[1], n * data.shape[3]) + data.shape[4:])
     plt.imshow(data); plt.axis('off')
 
-model_def = '/Users/sergeytyurin/Desktop/toDrive/Colab_Diploma/Classifier/deploy_infogain_v4.prototxt'
-model_weights = '/Users/sergeytyurin/Downloads/Colab_Diploma/Classifier/snapshots_v3/CLR_iter_10000.caffemodel'
+
+model_def = '/home/styurin/Diploma/Classifier/deploy_infogain_v5.prototxt'
+model_weights = '/home/styurin/Diploma/Classifier/snapshots_v5/CLR_iter_66000.caffemodel'
 
 net = caffe.Net(model_def,      # defines the structure of the model
                 model_weights,  # contains the trained weights
@@ -70,11 +71,14 @@ transformer.set_channel_swap('data', (2,1,0))  # the reference model has channel
 
 
 # set net to batch size of 1
-image_resize = 224
+image_resize = 256
 net.blobs['data'].reshape(1,3,image_resize,image_resize)
 
-image = caffe.io.load_image('/Users/sergeytyurin/Desktop/Datasets/Dest/Images/0.png')
-#plt.imshow(image)
+#image = caffe.io.load_image('/home/styurin/Dest/Classification_Images_4/2/1434.png')
+image = caffe.io.load_image('/home/styurin/Dest/Images/135.png')
+#image = caffe.io.load_image('/home/styurin/Dest/Classification_Images_4/3/10088.png')
+plt.imshow(image)
+plt.show()
 
 transformed_image = transformer.preprocess('data', image)
 net.blobs['data'].data[...] = transformed_image
@@ -88,6 +92,7 @@ print net.blobs['conv4'].data.shape
 print net.blobs['conv5'].data.shape
 print net.blobs['conv6'].data.shape
 print net.blobs['conv7'].data.shape
-vis_square(net.blobs['relu6'].data[0])
+vis_square(net.blobs['relu7'].data[0])
 print net.blobs['prob'].data
+
 plt.show()
