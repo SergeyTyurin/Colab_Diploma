@@ -10,7 +10,7 @@ layer {
     scale: 0.00392156885937
   }
   data_param {
-    source: "/home/styurin/Diploma/lmdb/CLR_a_128/train_db"
+    source: "../lmdb/CLR_a_128/train_db"
     batch_size: 10
     backend: LMDB
   }
@@ -27,7 +27,7 @@ layer {
     scale: 0.00392156885937
   }
   data_param {
-    source: "/home/styurin/Diploma/lmdb/CLR_a_128/val_db"
+    source: "../lmdb/CLR_a_128/val_db"
     batch_size: 6
     backend: LMDB
   }
