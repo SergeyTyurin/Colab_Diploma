@@ -8,11 +8,9 @@ layer {
   }
   transform_param {
     scale: 0.00392156885937
-    mirror: true
-    mean_file:"/home/styurin/Diploma/lmdb/CLR_3_256/mean.binaryproto"
   }
   data_param {
-    source: "/home/styurin/Diploma/lmdb/CLR_3_256/train_db"
+    source: "/home/styurin/Diploma/lmdb/CLR_a_128/train_db"
     batch_size: 10
     backend: LMDB
   }
@@ -29,8 +27,8 @@ layer {
     scale: 0.00392156885937
   }
   data_param {
-    source: "/home/styurin/Diploma/lmdb/CLR_3_256/val_db"
-    batch_size: 10
+    source: "/home/styurin/Diploma/lmdb/CLR_a_128/val_db"
+    batch_size: 6
     backend: LMDB
   }
 }
@@ -42,8 +40,8 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 20
-    kernel_size: 5
+    num_output: 16
+    kernel_size: 2
     stride: 1
     weight_filler {
       type: "xavier"
@@ -64,8 +62,8 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 20
-    kernel_size: 5
+    num_output: 32
+    kernel_size: 4
     stride: 1
     weight_filler {
       type: "xavier"
@@ -85,7 +83,7 @@ layer {
   top: "pool2"
   pooling_param {
     pool: MAX
-    kernel_size: 3
+    kernel_size: 2
     stride: 2
   }
 }
@@ -97,8 +95,8 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 40
-    kernel_size: 5
+    num_output: 64
+    kernel_size: 4
     stride: 1
     weight_filler {
       type: "xavier"
@@ -119,8 +117,8 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 40
-    kernel_size: 5
+    num_output: 64
+    kernel_size: 4
     stride: 1
     weight_filler {
       type: "xavier"
@@ -140,7 +138,7 @@ layer {
   top: "pool4"
   pooling_param {
     pool: MAX
-    kernel_size: 3
+    kernel_size: 2
     stride: 2
   }
 }
@@ -152,8 +150,8 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 80
-    kernel_size: 5
+    num_output: 128
+    kernel_size: 3
     stride: 1
     weight_filler {
       type: "xavier"
@@ -174,8 +172,8 @@ layer {
   param { lr_mult: 1 }
   param { lr_mult: 2 }
   convolution_param {
-    num_output: 80
-    kernel_size: 5
+    num_output: 128
+    kernel_size: 3
     stride: 1
     weight_filler {
       type: "xavier"
@@ -189,23 +187,10 @@ layer {
   top: "relu6"
 }
 
-
-layer {
-  name: "pool6"
-  type: "Pooling"
-  bottom: "relu6"
-  top: "pool6"
-  pooling_param {
-    pool: MAX
-    kernel_size: 2
-    stride: 2
-  }
-}
-
 layer {
   name: "score"
   type: "InnerProduct"
-  bottom: "pool6"
+  bottom: "relu6"
   top: "score"
   inner_product_param {
     num_output: 3
@@ -214,6 +199,8 @@ layer {
     }
   }
 }
+
+
 layer {
   name: "accuracy"
   type: "Accuracy"
