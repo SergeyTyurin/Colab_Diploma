@@ -7,7 +7,7 @@ layer {
     phase: TRAIN
   }
   transform_param {
-    scale: 0.00392156862745
+    #scale: 0.00392156862745
     crop_size: 227
     mirror: true
   }
@@ -26,7 +26,7 @@ layer {
     phase: TEST
   }
   transform_param {
-    scale: 0.00392156862745
+    #scale: 0.00392156862745
     crop_size: 227
     mirror: false
   }
@@ -54,12 +54,7 @@ layer {
     kernel_size: 11
     stride: 4
     weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
+      type: "xavier"
     }
   }
 }
@@ -100,12 +95,7 @@ layer {
     kernel_size: 5
     group: 2
     weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.1
+      type: "xavier"
     }
   }
 }
@@ -141,16 +131,11 @@ layer {
     decay_mult: 0
   }
   convolution_param {
-    num_output: 384
+    num_output: 512
     pad: 1
     kernel_size: 3
     weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
+      type: "xavier"
     }
   }
 }
@@ -174,17 +159,12 @@ layer {
     decay_mult: 0
   }
   convolution_param {
-    num_output: 384
+    num_output: 512
     pad: 1
     kernel_size: 3
     group: 2
     weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.1
+      type: "xavier"
     }
   }
 }
@@ -213,12 +193,7 @@ layer {
     kernel_size: 3
     group: 2
     weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.1
+      type: "xavier"
     }
   }
 }
@@ -255,12 +230,7 @@ layer {
   inner_product_param {
     num_output: 4096
     weight_filler {
-      type: "gaussian"
-      std: 0.005
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.1
+      type: "xavier"
     }
   }
 }
@@ -295,12 +265,7 @@ layer {
   inner_product_param {
     num_output: 4096
     weight_filler {
-      type: "gaussian"
-      std: 0.005
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.1
+      type: "xavier"
     }
   }
 }
@@ -335,12 +300,7 @@ layer {
   inner_product_param {
     num_output: 3
     weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0
+      type: "xavier"
     }
   }
 }
