@@ -57,6 +57,10 @@ layer {
     weight_filler {
       type: "xavier"
     }
+    bias_filler {
+      type: "constant"
+      value: 0.1
+    }
   }
 }
 layer {
@@ -84,6 +88,10 @@ layer {
     stride: 2
     weight_filler {
       type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.1
     }
   }
 }
@@ -125,6 +133,10 @@ layer {
     weight_filler {
       type: "xavier"
     }
+    bias_filler {
+      type: "constant"
+      value: 0.1
+    }
   }
 }
 layer {
@@ -153,6 +165,10 @@ layer {
     stride: 1
     weight_filler {
       type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.1
     }
   }
 }
@@ -193,6 +209,10 @@ layer {
     weight_filler {
       type: "xavier"
     }
+    bias_filler {
+      type: "constant"
+      value: 0.1
+    }
   }
 }
 layer {
@@ -220,6 +240,10 @@ layer {
     stride: 1
     weight_filler {
       type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.1
     }
   }
 }
@@ -250,6 +274,10 @@ layer {
     weight_filler {
       type: "xavier"
     }
+    bias_filler {
+      type: "constant"
+      value: 0.1
+    }
   }
 }
 layer {
@@ -276,6 +304,10 @@ layer {
     num_output: 4096
     weight_filler {
       type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.1
     }
   }
 }
@@ -304,6 +336,10 @@ layer {
     num_output: 3
     weight_filler {
       type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.1
     }
   }
 }
