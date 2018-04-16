@@ -1,7 +1,7 @@
 net: "train_infogain_v9.prototxt"
 test_iter: 433
 test_interval: 675
-base_lr: 0.001
+base_lr: 0.0001
 lr_policy: "step"
 gamma: 0.1
 stepsize: 100000
