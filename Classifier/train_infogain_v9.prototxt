@@ -271,6 +271,30 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
+    num_output: 4096
+  }
+}
+layer {
+  name: "relu7"
+  type: "ReLU"
+  bottom: "fc7"
+  top: "fc7"
+}
+
+layer {
+  name: "fc8"
+  type: "InnerProduct"
+  bottom: "fc7"
+  top: "fc8"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
     num_output: 3
     weight_filler {
       type: "xavier"
@@ -284,14 +308,14 @@ layer {
 layer {
   name: "accuracy"
   type: "Accuracy"
-  bottom: "fc7"
+  bottom: "fc8"
   bottom: "label"
   top: "accuracy"
 }
 layer {
   name: "loss"
   type: "SoftmaxWithLoss"
-  bottom: "fc7"
+  bottom: "fc8"
   bottom: "label"
   top: "loss"
 }
