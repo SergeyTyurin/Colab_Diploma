@@ -263,10 +263,10 @@ layer {
 }
 
 layer {
-  name: "fc8"
+  name: "fc7"
   type: "InnerProduct"
   bottom: "fc6"
-  top: "fc6"
+  top: "fc7"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -289,7 +289,7 @@ layer {
 layer {
   name: "accuracy"
   type: "Accuracy"
-  bottom: "fc6"
+  bottom: "fc7"
   bottom: "label"
   top: "accuracy"
 }
