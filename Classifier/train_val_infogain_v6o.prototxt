@@ -52,8 +52,8 @@ layer {
   }
   convolution_param {
     num_output: 96
-    kernel_size: 8
-    stride: 2
+    kernel_size: 16
+    stride: 4
     weight_filler {
       type: "gaussian"
       std: 0.01
@@ -86,7 +86,7 @@ layer {
   convolution_param {
     num_output: 96
     kernel_size: 5
-    stride: 2
+    pad: 2
     weight_filler {
       type: "gaussian"
       std: 0.01
@@ -129,8 +129,8 @@ layer {
   }
   convolution_param {
     num_output: 256
-    kernel_size: 3
-    pad: 1
+    kernel_size: 5
+    pad: 2
     stride: 1
     weight_filler {
       type: "gaussian"
@@ -163,8 +163,8 @@ layer {
   }
   convolution_param {
     num_output: 256
-    kernel_size: 3
-    pad: 1
+    kernel_size: 5
+    pad: 2
     stride: 1
     weight_filler {
       type: "gaussian"
@@ -209,7 +209,7 @@ layer {
   convolution_param {
     num_output: 512
     kernel_size: 3
-    stride: 1
+    pad: 1
     weight_filler {
       type: "gaussian"
       std: 0.01
@@ -242,7 +242,7 @@ layer {
   convolution_param {
     num_output: 512
     kernel_size: 3
-    stride: 1
+    pad: 1
     weight_filler {
       type: "gaussian"
       std: 0.01
@@ -295,9 +295,21 @@ layer {
 }
 
 layer {
+  name: "pool7"
+  type: "Pooling"
+  bottom: "relu7"
+  top: "pool7"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+
+layer {
   name: "fc8"
   type: "InnerProduct"
-  bottom: "relu7"
+  bottom: "pool7"
   top: "fc8"
   param {
     lr_mult: 1
@@ -308,7 +320,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 2048
+    num_output: 4096
     weight_filler {
       type: "gaussian"
       std: 0.005
@@ -349,7 +361,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 2048
+    num_output: 4096
     weight_filler {
       type: "gaussian"
       std: 0.005
