@@ -7,7 +7,7 @@ layer {
     phase: TRAIN
   }
   transform_param {
-    scale: 0.00392156862745
+    #scale: 0.00392156862745
     crop_size: 256
     mirror: false
   }
@@ -26,7 +26,7 @@ layer {
     phase: TEST
   }
   transform_param {
-    scale: 0.00392156862745
+    #scale: 0.00392156862745
     crop_size: 256
     mirror: false
   }
