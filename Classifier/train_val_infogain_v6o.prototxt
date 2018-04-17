@@ -8,7 +8,7 @@ layer {
   }
   transform_param {
     #scale: 0.00392156862745
-    crop_size: 256
+    crop_size: 224
     mirror: false
   }
   data_param {
@@ -27,7 +27,7 @@ layer {
   }
   transform_param {
     #scale: 0.00392156862745
-    crop_size: 256
+    crop_size: 224
     mirror: false
   }
   data_param {
@@ -52,7 +52,7 @@ layer {
   }
   convolution_param {
     num_output: 96
-    kernel_size: 16
+    kernel_size: 12
     stride: 4
     weight_filler {
       type: "gaussian"
@@ -70,10 +70,22 @@ layer {
   bottom: "conv1"
   top: "relu1"
 }
+
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "relu1"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
 layer {
   name: "conv2"
   type: "Convolution"
-  bottom: "relu1"
+  bottom: "pool1"
   top: "conv2"
   param {
     lr_mult: 1
@@ -84,7 +96,7 @@ layer {
     decay_mult: 0
   }
   convolution_param {
-    num_output: 96
+    num_output: 256
     kernel_size: 5
     pad: 2
     weight_filler {
@@ -103,21 +115,11 @@ layer {
   bottom: "conv2"
   top: "relu2"
 }
-layer {
-  name: "pool2"
-  type: "Pooling"
-  bottom: "relu2"
-  top: "pool2"
-  pooling_param {
-    pool: MAX
-    kernel_size: 3
-    stride: 2
-  }
-}
+
 layer {
   name: "conv3"
   type: "Convolution"
-  bottom: "pool2"
+  bottom: "relu2"
   top: "conv3"
   param {
     lr_mult: 1
@@ -148,10 +150,23 @@ layer {
   bottom: "conv3"
   top: "relu3"
 }
+
+layer {
+  name: "pool3"
+  type: "Pooling"
+  bottom: "relu3"
+  top: "pool3"
+  pooling_param {
+    pool: MAX
+    kernel_size: 3
+    stride: 2
+  }
+}
+
 layer {
   name: "conv4"
   type: "Convolution"
-  bottom: "relu3"
+  bottom: "pool3"
   top: "conv4"
   param {
     lr_mult: 1
@@ -162,9 +177,9 @@ layer {
     decay_mult: 0
   }
   convolution_param {
-    num_output: 256
-    kernel_size: 5
-    pad: 2
+    num_output: 512
+    kernel_size: 3
+    pad: 1
     stride: 1
     weight_filler {
       type: "gaussian"
@@ -182,21 +197,11 @@ layer {
   bottom: "conv4"
   top: "relu4"
 }
-layer {
-  name: "pool4"
-  type: "Pooling"
-  bottom: "relu4"
-  top: "pool4"
-  pooling_param {
-    pool: MAX
-    kernel_size: 2
-    stride: 2
-  }
-}
+
 layer {
   name: "conv5"
   type: "Convolution"
-  bottom: "pool4"
+  bottom: "relu4"
   top: "conv5"
   param {
     lr_mult: 1
@@ -240,7 +245,7 @@ layer {
     decay_mult: 0
   }
   convolution_param {
-    num_output: 512
+    num_output: 256
     kernel_size: 3
     pad: 1
     weight_filler {
@@ -261,44 +266,10 @@ layer {
 }
 
 layer {
-  name: "conv7"
-  type: "Convolution"
-  bottom: "relu6"
-  top: "conv7"
-  param {
-    lr_mult: 1
-    decay_mult: 1
-  }
-  param {
-    lr_mult: 2
-    decay_mult: 0
-  }
-  convolution_param {
-    num_output: 256
-    kernel_size: 3
-    stride: 1
-    weight_filler {
-      type: "gaussian"
-      std: 0.01
-    }
-    bias_filler {
-      type: "constant"
-      value: 0.1
-    }
-  }
-}
-layer {
-  name: "relu7"
-  type: "ReLU"
-  bottom: "conv7"
-  top: "relu7"
-}
-
-layer {
-  name: "pool7"
+  name: "pool6"
   type: "Pooling"
-  bottom: "relu7"
-  top: "pool7"
+  bottom: "relu6"
+  top: "pool6"
   pooling_param {
     pool: MAX
     kernel_size: 3
@@ -309,7 +280,7 @@ layer {
 layer {
   name: "fc8"
   type: "InnerProduct"
-  bottom: "pool7"
+  bottom: "pool6"
   top: "fc8"
   param {
     lr_mult: 1
