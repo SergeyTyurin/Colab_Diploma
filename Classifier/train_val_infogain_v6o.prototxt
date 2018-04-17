@@ -308,7 +308,7 @@ layer {
     decay_mult: 0
   }
   inner_product_param {
-    num_output: 1024
+    num_output: 2048
     weight_filler {
       type: "gaussian"
       std: 0.005
@@ -336,9 +336,50 @@ layer {
 }
 
 layer {
-  name: "score"
+  name: "fc9"
   type: "InnerProduct"
   bottom: "fc8"
+  top: "fc9"
+  param {
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    lr_mult: 2
+    decay_mult: 0
+  }
+  inner_product_param {
+    num_output: 2048
+    weight_filler {
+      type: "gaussian"
+      std: 0.005
+    }
+    bias_filler {
+      type: "constant"
+      value: 0.1
+    }
+  }
+}
+layer {
+  name: "relu9"
+  type: "ReLU"
+  bottom: "fc9"
+  top: "fc9"
+}
+layer {
+  name: "drop9"
+  type: "Dropout"
+  bottom: "fc9"
+  top: "fc9"
+  dropout_param {
+    dropout_ratio: 0.5
+  }
+}
+
+layer {
+  name: "score"
+  type: "InnerProduct"
+  bottom: "fc9"
   top: "score"
   inner_product_param {
     num_output: 3
