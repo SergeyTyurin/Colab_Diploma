@@ -130,7 +130,7 @@ layer {
 layer {
   name: "conv3"
   type: "Convolution"
-  bottom: "relu2"
+  bottom: "conv2"
   top: "conv3"
   param {
     lr_mult: 1
